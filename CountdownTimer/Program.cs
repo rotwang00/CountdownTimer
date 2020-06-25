@@ -15,13 +15,17 @@ namespace CountdownTimer
 
             Console.CursorVisible = false;
 
-            for (int i = Int32.Parse(inputString); i > 0; i--)
+            int seconds = Int32.Parse(inputString);
+           
+            for (int i = seconds; i > 0; i--)
             {
-                Console.Write($"\r{i} seconds left      ");
+                var remaining = TimeSpan.FromSeconds(i);
+                
+                Console.Write("\r" + remaining.ToString(@"mm\:ss") + " left      ");
                 Thread.Sleep(1000);
             }
 
-            Console.Write($"\rTime's up!       ");
+            Console.Write("\rTime's up!       ");
             Thread.Sleep(1000);
         }
     }
